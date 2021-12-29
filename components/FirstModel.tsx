@@ -1,8 +1,6 @@
 import React, { FC, useState } from 'react'
 import { View, Text } from 'react-native'
-// import WheelPickerExpo from 'react-native-wheel-picker-expo';
 import Picker from './Picker/Picker'
-import { IPicker } from '../interfaces/IPicker';
 import { mainPage as styles } from '../styles/mainPage'
 
 interface IValues {
@@ -43,7 +41,7 @@ export const FirstModel: FC = () => {
         </View>
         
         <View style={styles.line} />
-        <Text>{`${hours} : ${minutes}`}</Text>  
+        {/* <Text>{`${hours} : ${minutes}`}</Text>   */}
     </View>
     )
 }

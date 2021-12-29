@@ -48,13 +48,14 @@ const Picker = ({ values, defaultValue }: PickerProps) => {
   const translateY = useValue(0);
   const maskElement = (
     <Animated.View style={{ transform: [{ translateY }] }}>
-      {values.map((v, i) => {
+      {values.map((v, i:number) => {
         const y = interpolate(
-          divide(sub(translateY, ITEM_HEIGHT * 2), -ITEM_HEIGHT),
+          Number(divide(sub(translateY, ITEM_HEIGHT * 2), -ITEM_HEIGHT)),
+          [i - RADIUS_REL, i, i + RADIUS_REL],
+          [-1, 0, 1],
           {
-            inputRange: [i - RADIUS_REL, i, i + RADIUS_REL],
-            outputRange: [-1, 0, 1],
-            extrapolate: Extrapolate.CLAMP,
+            extrapolateLeft: Extrapolate.CLAMP,
+            extrapolateRight: Extrapolate.IDENTITY
           }
         );
         const rotateX = asin(y);
@@ -67,7 +68,7 @@ const Picker = ({ values, defaultValue }: PickerProps) => {
               {
                 transform: [
                   { perspective },
-                  { rotateX },
+                  { rotateX: `${rotateX}`},
                   translateZ(perspective, z),
                 ],
               },

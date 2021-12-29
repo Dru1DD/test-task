@@ -13,6 +13,7 @@ import Animated, {
     timing,
     Easing,
     stopClock,
+    EasingNode,
   } from "react-native-reanimated";
   import { State } from "react-native-gesture-handler";
   import { snapPoint } from "react-native-redash";
@@ -56,7 +57,11 @@ import Animated, {
       ]),
       cond(and(not(state.finished), eq(gestureState, State.END)), [
         cond(not(clockRunning(clock)), [startClock(clock)]),
-        timing(clock, state, config),
+        timing(clock, state, {
+          toValue: new Value(0),
+          duration: new Value(1000),
+          easing: EasingNode.bezier(0.22, 1, 0.36, 1)
+        }),
         cond(state.finished, stopClock(clock)),
       ]),
       state.position,
