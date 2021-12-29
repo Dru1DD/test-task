@@ -18,7 +18,7 @@ import { VISIBLE_ITEMS, ITEM_HEIGHT } from "./Constants";
 const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
   container: {
-    width: 0.61 * width,
+    width: 0.3 * width,
     height: ITEM_HEIGHT * VISIBLE_ITEMS,
     overflow: "hidden",
   },
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: "white",
-    fontFamily: "SFProText-Semibold",
+    fontFamily: "Roboto",
     fontSize: 24,
     lineHeight: ITEM_HEIGHT,
     textAlign: "center",
@@ -44,31 +44,36 @@ interface PickerProps {
   values: { value: number; label: string }[];
 }
 
+
 const Picker = ({ values, defaultValue }: PickerProps) => {
   const translateY = useValue(0);
+
+  const extrapolation = {
+    extrapolateLeft: Extrapolate.CLAMP,
+    extrapolateRight: Extrapolate.IDENTITY
+}
+
   const maskElement = (
     <Animated.View style={{ transform: [{ translateY }] }}>
       {values.map((v, i:number) => {
         const y = interpolate(
-          Number(divide(sub(translateY, ITEM_HEIGHT * 2), -ITEM_HEIGHT)),
+          divide(sub(translateY, ITEM_HEIGHT * 2), -ITEM_HEIGHT),
           [i - RADIUS_REL, i, i + RADIUS_REL],
           [-1, 0, 1],
-          {
-            extrapolateLeft: Extrapolate.CLAMP,
-            extrapolateRight: Extrapolate.IDENTITY
-          }
+          extrapolation
         );
         const rotateX = asin(y);
         const z = sub(multiply(RADIUS, cos(rotateX)), RADIUS);
         return (
           <Animated.View
-            key={v.value}
+            key={Math.floor(Math.random() * new Date().getTime())}
             style={[
               styles.item,
+              // Причина ошибок кроется вот тут
               {
                 transform: [
                   { perspective },
-                  { rotateX: `${rotateX}`},
+                  { rotateX },
                   translateZ(perspective, z),
                 ],
               },
@@ -103,6 +108,7 @@ const Picker = ({ values, defaultValue }: PickerProps) => {
         value={translateY}
         {...{ defaultValue }}
       />
+      
     </View>
   );
 };

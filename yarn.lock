@@ -3377,7 +3377,7 @@ expo-application@~4.0.1:
   resolved "https://registry.npmjs.org/expo-application/-/expo-application-4.0.1.tgz"
   integrity sha512-yZM/SrpWdi84m5+5F3VDfhrMZOz/uKwXcgBhOP1wzfXt0otGSRW1V5tM+a0sgaKZsDRCGojTU7Jm73BVwwVrwg==
 
-expo-asset@~8.4.4, expo-asset@~8.4.5:
+expo-asset@~8.4.5:
   version "8.4.5"
   resolved "https://registry.npmjs.org/expo-asset/-/expo-asset-8.4.5.tgz"
   integrity sha512-4E+VzFdgSjeCC+x80VuL+moY04U19SRV6vrL8DekQSyPbwkNR1QdvSx/7O7XTOspB9duwebQ1ue7JHFWOwyaMQ==
@@ -3474,9 +3474,9 @@ expo-modules-core@0.6.3:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
 
-expo-splash-screen@~0.14.0:
+expo-splash-screen@~0.14.1:
   version "0.14.1"
-  resolved "https://registry.npmjs.org/expo-splash-screen/-/expo-splash-screen-0.14.1.tgz"
+  resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.14.1.tgz#7647c8b98c679b8313d24a7c14729402c3c16631"
   integrity sha512-Y08wMIVjRuPbBnH2N6KwUfQYYnAiBrZMFAfXjjPPObyMDZ7v5VXTcbAWHqGdnYDcIbXRpat+fiWpTeU2HanBBg==
   dependencies:
     "@expo/configure-splash-screen" "^0.6.0"
@@ -4495,9 +4495,9 @@ jest-environment-node@^26.6.2:
     jest-mock "^26.6.2"
     jest-util "^26.6.2"
 
-jest-expo@~44.0.1:
+jest-expo@^44.0.0:
   version "44.0.1"
-  resolved "https://registry.npmjs.org/jest-expo/-/jest-expo-44.0.1.tgz"
+  resolved "https://registry.yarnpkg.com/jest-expo/-/jest-expo-44.0.1.tgz#2f39d8ed94f04d8f29b29d960d70f4b8a1049229"
   integrity sha512-pGncycmLBlg2rOiZjdWGFujlVe3X+SHutKN42rZPoG3zOvv66/E0VpSQxPyn3DN3JCNKpWlK7CkwpCweg0qKtA==
   dependencies:
     "@expo/config" "^6.0.6"

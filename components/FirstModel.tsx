@@ -14,7 +14,7 @@ export const FirstModel: FC = () => {
     const [ firstCount, setFirstCount ] = useState<IValues[]>(() => {
         let arr: IValues[] = []
         for( let i = 0; i < 10; i++ ) {
-            arr.push({value: Number(`0: ${i}`), label: `${i}`})
+            arr.push({value: i, label: `${i}`})
         }
         for( let i = 10;  i < 24; i++ ) {
             arr.push({value: i, label: `${i}`})
@@ -25,19 +25,20 @@ export const FirstModel: FC = () => {
     const [ secondCount, setSecondCount ] = useState<IValues[]>(() => {
         let arr: IValues[] = []
         for( let i = 0; i < 10; i++ ) {
-            arr.push({value: Number(`0: ${i}`), label: `${i}`})
+            arr.push({value: i, label: `${i}`})
         }
         for( let i = 10; i < 60; i++ ) {
             arr.push({value: i, label: `${i}`})
         }
         return arr
     })
+
     return (
         <View style={styles.modalContainer}>
         <View style={styles.modelTime}>
-            <Picker {...{values: firstCount, defaultValue: 0}}/>
+            <Picker {...{values: firstCount, defaultValue: 13}}/>
             <Text style={styles.separetedSymbol}>:</Text>
-            <Picker {...{values: secondCount, defaultValue: 0}}/>
+            <Picker {...{values: secondCount, defaultValue: 13}}/>
         </View>
         
         <View style={styles.line} />
