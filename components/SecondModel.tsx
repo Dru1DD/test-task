@@ -1,26 +1,28 @@
 import React, { FC, useState } from 'react'
 import { View, Text } from 'react-native'
-import { IPicker } from '../interfaces/IPicker'
-import WheelPickerExpo from 'react-native-wheel-picker-expo'
+import Picker from './Picker/Picker'
 import { mainPage as styles } from '../styles/mainPage'
 
+interface IValues {
+    value: number
+    label: string
+}
 export const SecondModel: FC = () => {
-    const [ tempValue, setTempValue ] = useState<IPicker>()
-    const [ tempLabel, setTempLabel ] = useState<string[]>(() => {
-        let arr: string[] = []
+    const [ tempValue, setTempValue ] = useState<IValues>()
+    const [ values, setValues ] = useState<IValues[]>(() => {
+        let arr: IValues[] = []
         for(let i = -100; i <= 100; i++) {
-            arr.push(`${i} °C`)
+            arr.push({value: i, label: `${i} °C`})
         }
         return arr
     })
 
+    const defaultValue = 101
+
     return (
         <View style={styles.modalContainer}>
-            <WheelPickerExpo
-                initialSelectedIndex={101}
-                items={tempLabel.map((item) => ({ label: item, value: `${item}`}))}
-                onChange={(item) => setTempValue(item.item.value)}
-            />
+
+            <Picker {...{values, defaultValue}}/>
             <View style={styles.line} />
             <Text>{tempValue}</Text>               
         </View>
