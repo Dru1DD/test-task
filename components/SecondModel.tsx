@@ -8,23 +8,18 @@ interface IValues {
     label: string
 }
 export const SecondModel: FC = () => {
-    const [ tempValue, setTempValue ] = useState<IValues>()
     const [ values, setValues ] = useState<IValues[]>(() => {
         let arr: IValues[] = []
-        for(let i = -100; i <= 100; i++) {
+        for(let i = -10; i <= 10; i++) {
             arr.push({value: i, label: `${i} °C`})
         }
         return arr
     })
 
-    const defaultValue = 101
-
     return (
         <View style={styles.modalContainer}>
-
-            <Picker {...{values, defaultValue}}/>
-            <View style={styles.line} />
-            <Text>{tempValue}</Text>               
+            <Picker {...{values, defaultValue: 0}}/>
+            {/* <View style={styles.line} />             */}
         </View>
     )
 }

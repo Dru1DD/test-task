@@ -52,7 +52,7 @@ export const mainPage = StyleSheet.create({
         margin: 20,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "white",
+        backgroundColor: "#363636",
         borderRadius: 20,
         padding: 35,
         shadowColor: "#000",
@@ -69,7 +69,7 @@ export const mainPage = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
         borderBottomWidth: 1,
-        borderBottomColor: '#363636'
+        borderBottomColor: 'white'
     },
     modelTime: {
         flexDirection: 'row'

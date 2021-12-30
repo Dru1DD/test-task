@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, Dimensions } from "react-native";
 import Animated, {
-  interpolate,
+  interpolateNode,
   Extrapolate,
   multiply,
   cos,
@@ -48,19 +48,16 @@ interface PickerProps {
 const Picker = ({ values, defaultValue }: PickerProps) => {
   const translateY = useValue(0);
 
-  const extrapolation = {
-    extrapolateLeft: Extrapolate.CLAMP,
-    extrapolateRight: Extrapolate.IDENTITY
-}
-
   const maskElement = (
     <Animated.View style={{ transform: [{ translateY }] }}>
       {values.map((v, i:number) => {
-        const y = interpolate(
+        const y = interpolateNode(
           divide(sub(translateY, ITEM_HEIGHT * 2), -ITEM_HEIGHT),
-          [i - RADIUS_REL, i, i + RADIUS_REL],
-          [-1, 0, 1],
-          extrapolation
+          {
+            inputRange: [i - RADIUS_REL, i, i + RADIUS_REL],
+            outputRange: [-1, 0, 1],
+            extrapolate: Extrapolate.CLAMP
+          }
         );
         const rotateX = asin(y);
         const z = sub(multiply(RADIUS, cos(rotateX)), RADIUS);
@@ -69,7 +66,6 @@ const Picker = ({ values, defaultValue }: PickerProps) => {
             key={Math.floor(Math.random() * new Date().getTime())}
             style={[
               styles.item,
-              // Причина ошибок кроется вот тут
               {
                 transform: [
                   { perspective },
@@ -101,14 +97,15 @@ const Picker = ({ values, defaultValue }: PickerProps) => {
             top: ITEM_HEIGHT * 2,
             height: ITEM_HEIGHT,
           }}
-        />
+        >
+        </View>
       </View>
+      
       <GestureHandler
         max={values.length}
         value={translateY}
         {...{ defaultValue }}
-      />
-      
+      /> 
     </View>
   );
 };

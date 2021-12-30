@@ -1,4 +1,5 @@
-import React, { useRef} from "react";
+import React from "react";
+
 import { StyleSheet } from "react-native";
 import Animated, {
   useCode,

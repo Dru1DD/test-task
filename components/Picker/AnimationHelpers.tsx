@@ -11,7 +11,6 @@ import Animated, {
     not,
     clockRunning,
     timing,
-    Easing,
     stopClock,
     EasingNode,
   } from "react-native-reanimated";

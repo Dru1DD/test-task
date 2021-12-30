@@ -6,11 +6,12 @@ import { SecondModel } from '../components/SecondModel';
 import ThirdModel from '../components/ThirdModel';
 import { mainPage as styles } from '../styles/mainPage'
 
+
+
 export const MainPage: FC = () => {
     const [ isFirstModalOpen, setFirstModalOpen ] = useState<boolean>(false)
     const [ isSecondModalOpen, setSecondModalOpen ] = useState<boolean>(false)
     const [ isThirdModalOpen, setThirdModalOpen ] = useState<boolean>(false)
-
 
     const firstClickHandler: () => void = () => {
         setFirstModalOpen(!isFirstModalOpen)
@@ -36,7 +37,7 @@ export const MainPage: FC = () => {
                         style={styles.btn}
                         onPress={firstClickHandler}
                     >
-                        <Text style={styles.btnText}>Первый компонент</Text>
+                        <Text style={styles.btnText}>Первый компонент</Text> 
                     </TouchableOpacity>
                 </View>
                 <View style={styles.action}>
